@@ -11,7 +11,7 @@ services:
     # Configure environment variables
     environment:
       MAILER_DSN: "smtp://mailpit:1025"
-      DATABASE_URL: "mysql://root:${MYSQL_ROOT_PASSWORD}@db:3306/${MYSQL_DATABASE}?charset=utf8mb4"
+      DATABASE_URL: "mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}?charset=utf8mb4"
 
   db:
     image: mysql/mysql-server:8.0

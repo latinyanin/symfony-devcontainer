@@ -24,7 +24,7 @@
         "bmewburn.vscode-intelephense-client",
         "neilbrayfield.php-docblocker",
         "mechatroner.rainbow-csv",
-        "valeryanm.vscode-phpsab",
+        "junstyle.php-cs-fixer",
         "SanderRonde.phpstan-vscode",
         "redhat.vscode-yaml",
         "mblode.twig-language-2",
@@ -60,18 +60,6 @@
           "*.info": "ini",
           "*.html": "twig"
         },
-        "phpsab.executablePathCBF": "vendor/bin/phpcbf",
-        "phpsab.executablePathCS": "vendor/bin/phpcs",
-        "phpsab.fixerArguments": [
-          "--extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml"
-        ],
-        "phpsab.fixerEnable": true,
-        "phpsab.snifferArguments": [
-          "--extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml"
-        ],
-        "phpsab.snifferMode": "onType",
-        "phpsab.snifferTypeDelay": 500,
-        "phpsab.standard": "PSR2",
         "intelephense.completion.maxItems": 1000,
         "intelephense.environment.phpVersion": "8.3.10",
         "intelephense.files.associations": [
@@ -92,7 +80,23 @@
         "php-docblocker.returnGap": true,
         "php-docblocker.useShortNames": true,
         "php-docblocker.qualifyClassNames": true,
-        "phpstan.binPath": "vendor/bin/phpstan"
+        "phpstan.binPath": "vendor/bin/phpstan",
+        "[php]": {
+          "editor.defaultFormatter": "junstyle.php-cs-fixer"
+        },
+        "php-cs-fixer.executablePath": "vendor/bin/php-cs-fixer",
+        "php-cs-fixer.executablePathWindows": "", //eg: php-cs-fixer.bat
+        "php-cs-fixer.onsave": false,
+        "php-cs-fixer.rules": "@PSR12",
+        "php-cs-fixer.config": ".php-cs-fixer.php;.php-cs-fixer.dist.php;.php_cs;.php_cs.dist",
+        "php-cs-fixer.allowRisky": false,
+        "php-cs-fixer.pathMode": "override",
+        "php-cs-fixer.ignorePHPVersion": false,
+        "php-cs-fixer.exclude": [],
+        "php-cs-fixer.autoFixByBracket": false,
+        "php-cs-fixer.autoFixBySemicolon": false,
+        "php-cs-fixer.formatHtml": false,
+        "php-cs-fixer.documentFormattingProvider": true
       }
     }
   },
@@ -108,10 +112,10 @@
     "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
       "packages": "nano,htop"
     },
-      "ghcr.io/devcontainers/features/node:1": {
+    "ghcr.io/devcontainers/features/node:1": {
       "version": "lts",
       "installYarnUsingApt": true,
       "nvmInstallPath": "/usr/local/share/nvm"
-      }
+    }
   }
 }
