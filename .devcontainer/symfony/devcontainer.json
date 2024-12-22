@@ -7,6 +7,9 @@
   "service": "symfony",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/,type=bind,consistency=cached",
   "workspaceFolder": "/workspaces/symfony",
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/code/vendor/bin/:/code/bin/"
+  },
   "shutdownAction": "stopCompose",
   "forwardPorts": [
     8000,
