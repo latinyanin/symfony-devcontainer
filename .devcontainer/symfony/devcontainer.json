@@ -1,10 +1,12 @@
 {
-  "name": "Symfony environment",
+  "name": "Symfony project",
   "dockerComposeFile": [
-    "docker-compose.yml"
+    "${localWorkspaceFolder}/.devcontainer/docker-compose.yml",
+    "${localWorkspaceFolder}/.devcontainer/symfony/docker-compose.yml"
   ],
   "service": "symfony",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  // "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/,type=bind,consistency=cached",
+  "workspaceFolder": "/workspaces/symfony",
   "shutdownAction": "stopCompose",
   "forwardPorts": [
     8000,
@@ -13,7 +15,7 @@
     "mailpit:8025",
     "mailpit:1025"
   ],
-  "postCreateCommand": "ln -sf $(pwd) /code && bash /code/.devcontainer/post-create.sh",
+  "postCreateCommand": "ln -sf $(pwd) /code && bash /workspaces/.devcontainer/post-create.sh",
   // "postStartCommand": "bash .devcontainer/post-start.sh",
   "customizations": {
     "vscode": {
