@@ -15,6 +15,9 @@
     "mailpit:8025",
     "mailpit:1025"
   ],
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  },
   "postCreateCommand": "ln -sf $(pwd) /code && bash /workspaces/.devcontainer/post-create.sh",
   // "postStartCommand": "bash .devcontainer/post-start.sh",
   "customizations": {
@@ -84,7 +87,7 @@
         "[php]": {
           "editor.defaultFormatter": "junstyle.php-cs-fixer"
         },
-        "php-cs-fixer.executablePath": "vendor/bin/php-cs-fixer",
+        "php-cs-fixer.executablePath": "/code/vendor/bin/php-cs-fixer",
         "php-cs-fixer.executablePathWindows": "", //eg: php-cs-fixer.bat
         "php-cs-fixer.onsave": false,
         "php-cs-fixer.rules": "@PSR12",
