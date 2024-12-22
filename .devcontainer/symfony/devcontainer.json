@@ -21,11 +21,14 @@
   "postCreateCommand": "ln -sf $(pwd) /code && bash /workspaces/.devcontainer/post-create.sh",
   // "postStartCommand": "bash .devcontainer/post-start.sh",
   "updateContentCommand": {
-    "composer install": ["composer", "install"]
+    "composer install": [
+      "composer",
+      "install"
+    ]
     // "importmap:install": ["symfony", "console", "importmap:install"]
   },
   "postAttachCommand": {
-    "server": "symfony server:start"
+    "server": "symfony server:start -d"
   },
   "customizations": {
     "vscode": {
@@ -35,6 +38,7 @@
         "neilbrayfield.php-docblocker",
         "mechatroner.rainbow-csv",
         "junstyle.php-cs-fixer",
+        // "valeryanm.vscode-phpsab",
         "SanderRonde.phpstan-vscode",
         "redhat.vscode-yaml",
         "mblode.twig-language-2",
@@ -96,10 +100,10 @@
         },
         "php-cs-fixer.executablePath": "/code/vendor/bin/php-cs-fixer",
         "php-cs-fixer.executablePathWindows": "", //eg: php-cs-fixer.bat
-        "php-cs-fixer.onsave": false,
-        "php-cs-fixer.rules": "@PSR12",
-        "php-cs-fixer.config": ".php-cs-fixer.php;.php-cs-fixer.dist.php;.php_cs;.php_cs.dist",
-        "php-cs-fixer.allowRisky": false,
+        "php-cs-fixer.onsave": true,
+        "php-cs-fixer.rules": "@Symfony",
+        "php-cs-fixer.config": "/code/.php-cs-fixer.dist.php",
+        "php-cs-fixer.allowRisky": true,
         "php-cs-fixer.pathMode": "override",
         "php-cs-fixer.ignorePHPVersion": false,
         "php-cs-fixer.exclude": [],
