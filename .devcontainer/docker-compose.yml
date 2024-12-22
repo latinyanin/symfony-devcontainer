@@ -1,0 +1,40 @@
+services:
+  symfony:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_VERSION: ${NODE_VERSION-lts/*}
+    command: sleep infinity
+    volumes:
+      - ../..:/workspaces:cached
+    # Configure environment variables
+    environment:
+      MAILER_DSN: "smtp://mailpit:1025"
+      DATABASE_URL: "mysql://root:${MYSQL_ROOT_PASSWORD}@db:3306/${MYSQL_DATABASE}?charset=utf8mb4"
+
+  db:
+    image: mysql/mysql-server:8.0
+    restart: unless-stopped
+    command: --max_allowed_packet=512M --transaction-isolation=READ-COMMITTED --disable_log_bin
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+
+  # Mailer
+  mailpit:
+    image: axllent/mailpit
+    container_name: mailpit
+    restart: unless-stopped
+
+volumes:
+  db:
+    driver: local

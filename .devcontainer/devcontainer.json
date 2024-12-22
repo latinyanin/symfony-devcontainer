@@ -1,0 +1,115 @@
+{
+  "name": "Symfony beginner",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "symfony",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [
+    8000,
+    3306,
+    "adminer:8080",
+    "mailpit:8025",
+    "mailpit:1025"
+  ],
+  "postCreateCommand": "ln -sf $(pwd) /code && bash /code/.devcontainer/post-create.sh",
+  // "postStartCommand": "bash .devcontainer/post-start.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "xdebug.php-debug",
+        "bmewburn.vscode-intelephense-client",
+        "neilbrayfield.php-docblocker",
+        "mechatroner.rainbow-csv",
+        // "valeryanm.vscode-phpsab",÷\
+        // "SanderRonde.phpstan-vscode",
+        "redhat.vscode-yaml",
+        "mblode.twig-language-2",
+        "moetelo.twiggy",
+        "MrChetan.phpstorm-parameter-hints-in-vscode"
+      ],
+      "settings": {
+        "php.xdebugSettings": {
+          "max_data": 65535,
+          "show_hidden": 1,
+          "max_children": 100,
+          "max_depth": 5
+        },
+        "editor.renderWhitespace": "boundary",
+        "editor.rulers": [
+          120
+        ],
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.trimAutoWhitespace": true,
+        "files.trimTrailingWhitespace": true,
+        "editor.wordWrap": "off",
+        "editor.wordWrapColumn": 120,
+        "files.associations": {
+          "*.inc": "php",
+          "*.module": "php",
+          "*.install": "php",
+          "*.theme": "php",
+          "*.profile": "php",
+          "*.tpl.php": "php",
+          "*.test": "php",
+          "*.php": "php",
+          "*.info": "ini",
+          "*.html": "twig"
+        },
+        "phpsab.executablePathCBF": "vendor/bin/phpcbf",
+        "phpsab.executablePathCS": "vendor/bin/phpcs",
+        "phpsab.fixerArguments": [
+          "--extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml"
+        ],
+        "phpsab.fixerEnable": true,
+        "phpsab.snifferArguments": [
+          "--extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml"
+        ],
+        "phpsab.snifferMode": "onType",
+        "phpsab.snifferTypeDelay": 500,
+        "phpsab.standard": "PSR2",
+        "intelephense.completion.maxItems": 1000,
+        "intelephense.environment.phpVersion": "8.3.10",
+        "intelephense.files.associations": [
+          "*.php",
+          "*.phtml",
+          "*.inc",
+          "*.module",
+          "*.install",
+          "*.theme",
+          "*.tpl.php",
+          "*.test"
+        ],
+        "intelephense.files.maxSize": 10000000,
+        "intelephense.format.enable": true,
+        "intelephense.phpdoc.returnVoid": false,
+        "intelephense.phpdoc.useFullyQualifiedNames": true,
+        "php-docblocker.gap": true,
+        "php-docblocker.returnGap": true,
+        "php-docblocker.useShortNames": true,
+        "php-docblocker.qualifyClassNames": true,
+        "phpstan.binPath": "vendor/bin/phpstan"
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/nils-geistmann/devcontainers-features/zsh:0": {
+      "theme": "robbyrussell",
+      "plugins": "git"
+    },
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages": "nano,htop"
+    },
+      "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "installYarnUsingApt": true,
+      "nvmInstallPath": "/usr/local/share/nvm"
+      }
+  }
+}
