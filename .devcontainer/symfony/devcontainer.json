@@ -20,6 +20,13 @@
   },
   "postCreateCommand": "ln -sf $(pwd) /code && bash /workspaces/.devcontainer/post-create.sh",
   // "postStartCommand": "bash .devcontainer/post-start.sh",
+  "updateContentCommand": {
+    "composer install": ["composer", "install"]
+    // "importmap:install": ["symfony", "console", "importmap:install"]
+  },
+  "postAttachCommand": {
+    "server": "symfony server:start"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
